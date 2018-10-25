@@ -14,7 +14,7 @@ const inputComponent = {
     }
   },
   methods: {
-    // Custom Event
+    // Custom Event using $emit (old method)
     // monitorEnterKey() {
     //   this.$emit('add-note', {
     //     note: this.input,
@@ -23,7 +23,7 @@ const inputComponent = {
     //   this.input = '';
     // }
 
-    // Event Bus
+    // Event Bus using EventBus.$emit
     monitorEnterKey() {
       EventBus.$emit('add-note', {
         note: this.input,
@@ -42,6 +42,8 @@ const noteCountComponent = {
     }
   },
   created() {
+    // This is an event listener that will increment the noteCount variable
+    // when the add-note event is triggered.
     EventBus.$on('add-note', event => this.noteCount++);
   }
 }
@@ -54,6 +56,8 @@ new Vue({
     placeholder: 'Enter a note'
   },
   created() {
+    // This is an event listener that will call the addNote method
+    // when the add-note event is triggered.
     EventBus.$on('add-note', event => this.addNote(event));
   },
   components: {
