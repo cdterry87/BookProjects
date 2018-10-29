@@ -23,8 +23,8 @@ const inputForm = {
             </div>
             <div class="field">
                 <label>Email</label>
-                <input v-model="fields.email" type="email" placeholder="What's your email?" />
-                <span style="color: red">{{ fieldErrors.newItem }}</span>
+                <input v-model="fields.email" type="text" placeholder="What's your email?" />
+                <span style="color: red">{{ fieldErrors.email }}</span>
             </div>
             <div class="field">
                 <label>Urgency</label>
@@ -88,11 +88,11 @@ const inputForm = {
             if (!fields.email) errors.email = "Email required!";
             if (!fields.urgency) errors.urgency = "Urgency required!";
             if (!fields.termsAndConditions) {
-                errors.termsAndConditions = "Terms and conditions have to be approved";
+                errors.termsAndConditions = "Terms and conditions have to be approved!";
             }
 
             if (fields.email && !this.isEmail(fields.email)) {
-                errors.email = "Invalid email";
+                errors.email = "Invalid email address!";
             }
 
             return errors;
