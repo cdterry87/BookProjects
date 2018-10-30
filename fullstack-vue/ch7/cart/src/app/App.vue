@@ -1,60 +1,51 @@
 <template>
-  <div id="app">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-3">
-          <CartList />
+    <div id="app">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-6 column--align-center">
+                    <router-view></router-view>
+                </div>
+            </div>
         </div>
-        <div class="column is-9">
-          <ProductList />
-        </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
-import CartList from './components/cart/CartList';
-import ProductList from './components/product/ProductList';
-
 export default {
-  name: 'App',
-  components: {
-    CartList,
-    ProductList
-  }
-}
+    name: "App"
+};
 </script>
 
 <style>
-html, body {
-  height: 100%;
-  background: #F2F6FA;
+html,
+body {
+    height: 100%;
+    background: #f2f6fa;
 }
 
 #app {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .container {
-  width: 100%;
+    width: 100%;
 }
 
 .column--align-center {
-  margin: 0 auto;
+    margin: 0 auto;
 }
 
 .navigation-buttons {
-  position: absolute;
-  top: 5px;
-  width: 99%;
-  z-index: 99;
+    position: absolute;
+    top: 5px;
+    width: 99%;
+    z-index: 99;
 }
 
 .navigation-buttons .button .fa {
-  padding-right: 5px;
+    padding-right: 5px;
 }
 </style>
