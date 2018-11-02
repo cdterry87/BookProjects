@@ -1,5 +1,8 @@
 <template>
     <section id="product-item" class="box">
+        <span @click="$router.go(-1)" class="return-icon">
+            <i class="fa fa-arrow-left is-primary"></i>
+        </span>
         <div class="product-item__details">
             <h1 class="title is-4">
                 <p>{{ productItem.title }}</p>
@@ -11,7 +14,7 @@
             <p class="product-item__created_at">
                 Added: <span class="has-text-weight-bold">{{ productItem.created_at }}</span>
             </p>
-            <button class="button is-primary product-item__button">Add to Cart</button>
+            <button class="button is-primary product-item__button" @click="addAndGoToCart(productItem)">Add to Cart</button>
         </div>
         <div class="product-item__image">
             <img :src="require(`../../assets/${productItem.image_tag}`)" :alt="productItem.title" :title="productItem.title" />            
@@ -26,6 +29,14 @@ export default {
     computed: {
         productItem() {
             return this.$store.getters.productItemFromId(Number(this.id));
+        }
+    },
+    methods: {
+        addAndGoToCart(productItem) {
+            this.$store.dispatch('addCartItem', productItem)
+            .then(() => {
+                this.$router.push('/cart');
+            });
         }
     }
 }
